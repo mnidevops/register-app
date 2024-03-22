@@ -18,6 +18,11 @@ pipeline {
 				git branch: 'develop', credentialsId: 'jenkins-creds', url: 'https://github.com/mnidevops/register-app.git'
 			}
 		}
+		stage ('Build application package') {
+			steps {
+				sh "mvn clean package"
+			}
+		}
 		
 	}
 }
