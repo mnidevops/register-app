@@ -28,6 +28,15 @@ pipeline {
 				sh "mvn test"
 			}
 		}
+		stage ('Check Code Quality') {
+			steps {
+			scripts {
+				withSonarQubeEnv(credentialsId: 'sonarqube-creds') {
+					sh "mvn sonar sonar"
+				}
+			}
+			}
+		}
 		
 	}
 }
