@@ -30,7 +30,7 @@ pipeline {
 		}
 		stage ('Check Code Quality') {
 			steps {
-				withSonarQubeEnv(credentialsId: 'sonarqube-creds') {
+				withSonarQubeEnv(credentialsId: 'sonarqube-creds', installationName: 'sonarqube-server') {
 					sh "mvn sonar:sonar"
 				}
 			}
