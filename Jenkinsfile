@@ -35,6 +35,11 @@ pipeline {
 				}
 			}
 		}
+		stage ('QualityGate check') {
+			steps {
+				waitForQualityGate abortPipeline: false, credentialsId: 'sonarqube-creds'
+			}
+		}
 		
 	}
 }
